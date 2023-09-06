@@ -11,42 +11,14 @@ class LinkedList{
     }
     
     
-    reverseLinkedList(){
-        let countAllNode = 0
-        let count = 1
-        let currentNode = this.head
-        while(currentNode.next){  
-            countAllNode++
-            currentNode = currentNode.next
-        }
-        
-        for(let i = 0; i<countAllNode; i++){
-            let lasatNode = this.head
-            while(lasatNode.next){  
-                lasatNode = lasatNode.next
-            }
-            // add last node in (count) index
-            this.addAtIndex(lasatNode.data, count)
-            count++
-            this.removeLast() 
-        }
-        
-    }
+
     
     // addFirst
     addFirst(data){
         this.head = new Node(data, this.head)
     }
     
-    removeLast(){
-        let currentNode = this.head
-        
-        while(currentNode.next.next){
-            currentNode = currentNode.next
-        }
-        currentNode.next = null
-        
-    }
+
     
     
     // addLast
@@ -90,6 +62,37 @@ class LinkedList{
           
     }
     
+    removeLast(){
+        let currentNode = this.head
+        
+        while(currentNode.next.next){
+            currentNode = currentNode.next
+        }
+        currentNode.next = null
+        
+    }
+    
+    reverseLinkedList(){
+        let countAllNode = 0
+ 
+        let currentNode = this.head
+        while(currentNode.next){  
+            countAllNode++
+            currentNode = currentNode.next
+        }
+        
+        for(let i = 1; i<countAllNode+1; i++){
+            let lasatNode = this.head
+            while(lasatNode.next){  
+                lasatNode = lasatNode.next
+            }
+            // add last node in (count) index
+            this.addAtIndex(lasatNode.data, i)
+            
+            this.removeLast() 
+        }
+        
+    }
    
     printAllNode(){
         let currentNode = this.head
