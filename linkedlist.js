@@ -43,12 +43,12 @@ class LinkedList{
         
         let count = 0
         let currentNode = this.head
-        if(index === 1){
+        if(index === 0){
             this.addFirst(data)
         }else{
             while(currentNode){
                
-                if(index-2 === count){
+                if(index-1 === count){
                     const node = new Node(data, currentNode.next)
                     currentNode.next = node
                    
@@ -72,6 +72,36 @@ class LinkedList{
         
     }
     
+    reverse(){
+        //        1 => 2 => 3 => 4 => null
+        //null <= 1 <= 2 <= 3 <= 4
+        //prev   curr next
+  
+        //  null <= 1  2 => 3 => 4 => null
+
+        
+        let currentNode = this.head
+        let prev = null
+        
+
+            
+        while(currentNode){
+            let next = currentNode.next
+            
+            if(!next){
+                this.head = currentNode
+            }
+            
+            currentNode.next = prev
+             
+            prev = currentNode
+            currentNode = next
+        }
+
+
+    }
+    
+    
     reverseLinkedList(){
         let countAllNode = 0
  
@@ -81,7 +111,7 @@ class LinkedList{
             currentNode = currentNode.next
         }
         
-        for(let i = 1; i<countAllNode+1; i++){
+        for(let i = 0; i<countAllNode; i++){
             let lasatNode = this.head
             while(lasatNode.next){  
                 lasatNode = lasatNode.next
@@ -126,11 +156,11 @@ ll.addLast(3)
 ll.addLast(4)
 ll.addLast(5)
 
-ll.addFirst(0)
-ll.addAtIndex(2222,6)
+// ll.addAtIndex(2222,2)
 
 // ll.addAtIndex(4,1)
 // ll.removeLast()
 ll.printAll()
-ll.reverseLinkedList()
+// ll.reverseLinkedList()
+ll.reverse()
 ll.printAll()
